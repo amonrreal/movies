@@ -54,8 +54,13 @@ export default {
         })
         .then((res) => {
           console.log(res)
-          this.movies = res.data.Search
-          this.loading = false
+          if (res.data.Search == null) {
+            window.alert('No se encontró la pelicula, intenta con otro título.')
+            this.loading = false
+          } else {
+            this.movies = res.data.Search
+            this.loading = false
+          }
         })
     },
   },
